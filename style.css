@@ -1,0 +1,25 @@
+
+    table {
+        text-align: center;
+        width: 100%;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+        th {
+            height: 30px;
+        }
+            tr:hover {
+                background-color: lightgray;
+                }
+
+                th {
+                    background-color: rgb(153, 4, 29);
+                    color: white;
+                    
+                }
+                   
+                    tr:nth-child(even) {
+                        background-color: lightgray;
+                    }
+                  
