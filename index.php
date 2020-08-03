@@ -1,88 +1,84 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/newdir.css">
     <title>Document</title>
 </head>
-<body>
+<body>     
+<?php
 
-       <?php   
-    // get url in to array
-function scan_dir(string $path, bool $hidden = false){  
-        
-    $out = [];
-    $path = rtrim($path, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR;
-    $read = opendir($path);
-        
-    while (false !== ($res = readdir($read))) {
-        
-        if ($res === '.' || $res === '..'  || ($hidden === false && $res[0] === '.')) {
-            continue;
-        }
+session_start();
 
-        if (is_dir($path.$res)) {       
-            $out[$res] = scan_dir($path.$res, $hidden);
-            
-           
-        } else {
-            $out[] = $res;
-        }
-    }
+$username = 'a';
+$password = 'a';
 
-        closedir($read);
-        return $out;
+$random1 = 'secret_key1';
+$random2 = 'secret_key2';
+
+$hash = md5($random1.$pass.$random2); 
+
+$self = $_SERVER['REQUEST_URI'];
+
+if(isset($_GET['logout']))
+{
+	unset($_SESSION['login']);
 }
 
-        $url = false;
-        if (isset($_GET["a"])){
-            $url = $_GET["a"];
-            echo '<button onclick="window.history.back()">Go Back</button>';
-        }
+if (isset($_SESSION['login']) && $_SESSION['login'] == $hash) {
 
-            $folders = scan_dir('./home/'.$url);           
-                echo htmlMyPathIs($folders, $url);
+	?>
+		<button class="log" id="log" onclick="window.location.href='?logout=true';">
+        Logout
+    </button>
+		
+			
+    <?php
+    include 'Url.php';
+    include 'nav.php';
+    include 'newdir.php';
+}
 
+else if (isset($_POST['submit'])) {
 
-    function htmlMyPathIs($arr, $url) {  
-        $out = '<table>';
-        $out .=  '<tr><th>type</th><th>name</th><th>action</th></tr>';
-        foreach ($arr as $k => $v) {
-            if (! is_array($v)) { 
-                $out .= '<tr><td>file</td><td>'.$v.'</td><td></td></tr>';
-            } else {
-                $link = '?a='.$k;
-                if (isset($url)) {
-                    $link = '?a='.$url.'/'.$k;
-                }
-                $out .= '<tr><td>folder</td><td><a href="http://localhost/Pamokos/Project_one'.$link.'">'.$k.'</a></td><td>edit folder</td></tr>';
-            }
-        }
-        $out .= '</table>';
-        return $out;
-    }
-        //create new folder
-        function creatdir(){
-            $newcwd=getcwd();
-            $add = $_POST['add'];
-            mkdir($newcwd.$add);
-        }
-        
-        if(!isset($_POST['upload'])){
-     ?>
-             <form action = '' method = 'POST'> 
-                    <input type='text' name='add' id='add'>
-                     <input class='button' type='submit' name='upload' id='upload'>
-             </form> 
+	if ($_POST['username'] == $username && $_POST['password'] == $password){
+	
+		//IF USERNAME AND PASSWORD ARE CORRECT SET LOG-IN 
+		$_SESSION["login"] = $hash;
+		header("Location: $_SERVER[PHP_SELF]");
+		
+	} else {
+		
+		//  ERROR
+		display_login_form();
+		echo '<p>Username or password is invalid</p>';
+		
+	}
+}	
+	
+else { 
 
-        <?php } else {
-                creatdir();
-                echo "<form action = '' method = 'POST'> 
-                <input type='text' name='add' id='add'>
-                 <input class='button' type='submit'    value='create' name='upload' id='upload'>
-         </form> ";
-        } 
-             ?>
+	display_login_form();
+
+}
+
+function display_login_form(){ ?>
+<center>
+    <div id="mainbtn">
+        <h1>Login</h1>
+        <form action="<?php echo $self; ?>" method='post'>
+            <input type="text" name="username" id="username" class="text" placeholder="username"><br><hr><br>
+            <input type="password" name="password" id="password" class="text" placeholder="password"><br><hr><br>
+            <input type="submit" name="submit" value="submit" id="logn">
+        </form>	
+    </div>
+</center>
+    <?php
+}
+?>
 </body>
 </html>

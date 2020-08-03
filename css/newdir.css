@@ -1,0 +1,19 @@
+   
+   .h4{
+       margin-left: 20px;
+        margin-top: 50px;
+        margin-bottom: 0;
+    }
+        #add {
+            height: 20px;
+            font-weight: 300;
+        }
+            #upload {
+                width: 70px;
+                height: 30px;
+                background-color: #99041d;
+                font-weight: 300;
+                color: white;
+            }
+
+                
