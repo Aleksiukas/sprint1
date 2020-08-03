@@ -1,7 +1,10 @@
-To run this program you need to instal :
-1. Visual Studio Code,
-2. Ammps.
+Sprint project
 
-After you install go to the ammps folder "www" and create a new folder named 'home'.
+To reach website:
 
-Go to github by this link and clone respository, then run Visual studio code, and open a folder 'home' and.
+1. Download "sprint1"repository .Zip file and extract to AMPPS "www" folder; 
+2. Go to internet browser('Chrome','Firefox',depends what browser you are using);
+3. Go to "localhost" and open "/sprint1-master" directory. 
+
+
+Sprint1 repository - 
