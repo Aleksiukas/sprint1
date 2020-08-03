@@ -14,8 +14,8 @@
 
 session_start();
 
-$username = 'a';
-$password = 'a';
+$username = 'user';
+$password = 'admin';
 
 $random1 = 'secret_key1';
 $random2 = 'secret_key2';
