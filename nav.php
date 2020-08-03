@@ -16,7 +16,7 @@ function htmlMyPathIs($arr, $url) {
                 if (isset($url)) {
                     $link = '?a='.$url.'/'.$k;
                 }
-                $out .= '<tr><td>folder</td><td><a href="http://localhost/Pamokos/Project_one'.$link.'">'.$k.'</a></td><td>edit folder</td></tr>';
+                $out .= '<tr><td>folder</td><td><a href="http://localhost/sprint1-master'.$link.'">'.$k.'</a></td><td>edit folder</td></tr>';
             }
         }
         $out .= '</table>';
