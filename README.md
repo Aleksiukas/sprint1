@@ -7,4 +7,4 @@ To reach website:
 3. Go to "localhost" and open "/sprint1-master" directory. 
 
 
-Sprint1 repository - 
+Sprint1 repository - https://github.com/Aleksiukas/sprint1.git
