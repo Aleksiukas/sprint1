@@ -10,4 +10,4 @@ To reach website:
 Sprint1 repository - https://github.com/Aleksiukas/sprint1.git
 
 username - user,
-passwodr - admin.
+password - admin.
